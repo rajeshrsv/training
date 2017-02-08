@@ -1,36 +1,26 @@
 package com.training.student.main;
 
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-
-import com.training.student.domain.Address;
-import com.training.student.domain.Student;
-import com.training.student.util.HibernateUtil;
+import com.training.student.service.IService;
+import com.training.student.service.Service;
 
 public class AppMain {
 
 	public static void main(String[] args) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
-		Transaction transaction = null;
-		try {
-			transaction = session.beginTransaction();
 
-			Address address1 = new Address("3/69", "east street, periyapatti", "namakkal", "TN", "INDIA", 637002);
-			Address address2 = new Address("45C/9", "Ring Road", "Banglore", "KN", "INDIA", 560000);
+		IService service = new Service();
 
-			Student student1 = new Student("RAJESHKUMAR", "1225028", "SCIENCE", address1);
-			Student student2 = new Student("SUBHASH", "1225024", "MATHS", address2);
-			session.save(student1);
-			session.save(student2);
-			transaction.commit();
-		} catch (HibernateException e) {
-			transaction.rollback();
-			e.printStackTrace();
-		} finally {
-			session.close();
-		}
-
+		/*Address address1 = new Address("3/69", "east street, periyapatti", "namakkal", "TN", "INDIA", 637002);
+		Student student = new Student("RAJESHKUMAR", "1225028", "SCIENCE", address1);
+		service.saveStudentInfo(student);*/
+		
+		System.out.println("--------- STUDENT LIST----------\n");
+		service.getAllStudentInfo().forEach(System.out::println);
+		
+		System.out.println("--------- SELECT BY COLUMN----------\n");
+		service.getStudentInfoByColumnName("name").forEach(System.out::println);
+		
+		System.out.println(service.getStudentById(2).toString());
+		
 	}
 
 }

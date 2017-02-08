@@ -74,4 +74,10 @@ public class Student {
 		this.deptName = deptName;
 	}
 
+	@Override
+	public String toString() {
+		return "Student [studId=" + studId + ", name=" + name + ", rollNo=" + rollNo + ", deptName=" + deptName
+				+ ", address=" + address + "]";
+	}
+
 }

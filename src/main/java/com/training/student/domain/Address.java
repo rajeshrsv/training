@@ -18,6 +18,12 @@ public class Address {
 	private String country;
 	private int pinCode;
 
+	@Override
+	public String toString() {
+		return "Address [addrId=" + addrId + ", doorNo=" + doorNo + ", street=" + street + ", district=" + district
+				+ ", state=" + state + ", country=" + country + ", pinCode=" + pinCode + "]";
+	}
+
 	@Id
 	@GeneratedValue
 	@Column(name = "ADDRESS_ID")
