@@ -22,7 +22,7 @@ public class Address {
 	public String toString() {
 		return "Address [addrId=" + addrId + ", doorNo=" + doorNo + ", street=" + street + ", district=" + district
 				+ ", state=" + state + ", country=" + country + ", pinCode=" + pinCode + "]";
-	}
+	 }
 
 	@Id
 	@GeneratedValue
